@@ -15,7 +15,7 @@ public class UsersDTO implements Serializable {
             lastname,
             username,
             password;
-    private Date created;
-    private Date col_update;
+    private Date created,
+            col_update;
 
 }

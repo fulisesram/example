@@ -1,7 +1,6 @@
 package com.example.example.service.interfaces;
 
-import com.example.example.dto.UserRequest;
-import com.example.example.dto.UsersDTO;
+import com.example.example.dto.*;
 import org.springframework.stereotype.Service;
 import java.util.*;
 

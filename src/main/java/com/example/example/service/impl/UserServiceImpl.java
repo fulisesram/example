@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import java.lang.reflect.Type;
 import java.util.*;
 
-
 @Component // Para reacion de inyeccion de dependencias
 public class UserServiceImpl implements IUserService {
 
@@ -21,45 +20,32 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public List<UsersDTO> findAll() {
-
         List<UsersDTO> dto = new ArrayList<>();
-
         Iterable<Users> users = this.userRepository.findAll();
-
         for (Users user : users){
-            UsersDTO usersDTO = MHelpers.modelMapper().map(users, UsersDTO.class);
+            UsersDTO usersDTO = MHelpers.modelMapper().map(user, UsersDTO.class);
             dto.add(usersDTO);
         }
-
         return dto;
     }
 
     @Override
     public UsersDTO findByUsername(String username) {
-
         Optional<Users> users = this.userRepository.findByUsername(username);
-
         if (!users.isPresent()){
             return null;
         }
-
         return MHelpers.modelMapper().map((Object) users.get(), (Type) UsersDTO.class);
     }
-
-
 
     @Override
     public UsersDTO findById(int userId) {
-
         Optional<Users> users = this.userRepository.findById((long) userId);
-
         if (!users.isPresent()){
             return null;
         }
-
         return MHelpers.modelMapper().map((Object) users.get(), (Type) UsersDTO.class);
     }
-
 
     @Override
     public void save(UserRequest user) {

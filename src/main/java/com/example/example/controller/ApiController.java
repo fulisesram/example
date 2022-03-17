@@ -4,10 +4,8 @@ import com.example.example.dto.UserRequest;
 import com.example.example.service.interfaces.IUserService;
 import com.example.example.utilis.Exceptions.ApiUnprocessableEntity422;
 import com.example.example.validator.UserValidatorImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -38,13 +36,13 @@ public class ApiController {
         return ResponseEntity.ok(Boolean.TRUE);
     }
 
-    @DeleteMapping(value = "/{userId}/delete" )
+    @DeleteMapping(value = "/delete/{userId}" )
     public ResponseEntity<Object> deleteUser(@PathVariable int userId){
         this.userService.deleteById(userId);
         return ResponseEntity.ok(Boolean.TRUE);
     }
 
-    @PutMapping(value = "/{userId}/update")
+    @PutMapping(value = "/update/{userId}")
     public ResponseEntity<Object> updateUser(@RequestBody UserRequest request, @PathVariable int userId){
         this.userService.update(request, userId);
         return ResponseEntity.ok(Boolean.TRUE);

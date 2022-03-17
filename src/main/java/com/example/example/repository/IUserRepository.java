@@ -9,6 +9,7 @@ import java.util.*;
 @Repository // Crear el bean
 public interface IUserRepository extends JpaRepository <Users, Long> {
 
+    /* Agregando otro metodo 'Encontrar por username' */
     @Transactional(readOnly = true) // Solo lectura, no permite la modificacion de datos
     Optional<Users> findByUsername(String username);
 
